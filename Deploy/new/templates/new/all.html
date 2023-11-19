@@ -1,0 +1,31 @@
+{% extends 'new/base.html' %}
+
+{% block content %}
+<body>
+    <div style="background-color: #e9ecef;">
+        <a class="navbar-brand text-dark" style="margin-left: 30px;" href="{% url 'doctor_patient_details_all' %}">All</a>
+        <a class="navbar-brand text-dark" style="margin-left: 10px;" href="{% url 'doctor_patient_details_last' %}">Last</a>
+    </div>
+    <br>
+    <div class="feed_table">
+    <table class="table" border="default">
+        <tr>
+            <th>Crime</th><th>Gender</th><th>Age</th>
+            <th>Income</th><th>Job</th><th>Maritalstatus</th>
+            <th>Education</th>
+            <th>Harm</th><th>Attack</th><th>AttackMethod</th>
+            </tr>
+        {% for i in model %}
+        <tr>
+            <td>{{i.Crime}}</td><td>{{i.Gender}}</td>
+            <td>{{i.Age}}</td><td>{{i.Income}}</td>
+            <td>{{i.Job}}</td><td>{{i.Maritalstatus}}</td>         
+            <td>{{i.Education}}</td><td>{{i.Harm}}</td>
+            <td>{{i.Attack}}</td><td>{{i.AttackMethod}}</td>
+        </tr>
+        {% endfor %}
+</table>
+</div>
+{% endblock content %}
+</body>
+</html>

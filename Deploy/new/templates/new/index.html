@@ -1,0 +1,125 @@
+{% extends 'new/base.html' %}
+{% load static %}
+
+
+	
+	{% block content %}
+	<body class="index">
+	<div>
+		<div style="background-color: #e9ecef;">
+		<a class="navbar-brand text-dark" style="margin-left: 30px;" href="{% url 'apredict' %}"><b>Enter Details:</b></a>
+		<a class="navbar-brand text-dark" style="margin-left: 1088px;" href="{% url 'feedback' %}">Feedback</a>
+	</div>
+
+     <!-- Main Input For Receiving Query to our ML -->
+
+	 <form class="form1 container1" action="{% url 'predict' %}" style="background-color: #c7e9fa;box-sizing: border-box;
+	 font-family: proxima_nova_rgregular, Helvetica, Arial, sans-serif;" method="POST">
+	 {% csrf_token %}
+		 <fieldset class="fieldset1">
+			 <legend class="legend1">Enter the Detail</legend>
+
+	 <label for="Crime"><b>Crime:</b></label><br>
+
+	 <select class="input1" name="Crime" id="Crime">
+	   <option value=1>Misuse of Debit Cards or Credit Cards</option>
+	   <option value=0>Hacking into the Information System and Capturing Data</option>
+	   <option value=2>Through Informatics Theft</option>
+	 </select><br><br>
+
+	 <label for="Gender"><b>Gender:</b></label><br>
+
+	 <select class="input1" name="Gender" id="Gender">
+	   <option value=1>Male</option>
+	   <option value=0>Female</option>
+	   <option value=2>other</option>
+	 </select><br><br>
+
+	 <label for="Age"><b>Age:</b></label><br>
+
+	 <select class="input1" name="Age" id="Age">
+	   <option value=0>27 and Under</option>
+	   <option value=2>Between 28 and 37</option>
+	   <option value=3>Between 38 and 50</option>
+	   <option value=1>51 and Above</option>
+	 </select><br><br>
+
+	 <label for="Income"><b>Income:</b></label><br>
+
+	 <select class="input1" name="Income" id="Income">
+	   <option value=2>Middle</option>
+	   <option value=1>Low</option>
+	   <option value=0>High</option>
+	 </select><br><br>
+
+
+	 <label for="Job"><b>Job:</b></label><br>
+
+	 <select class="input1" name="Job" id="Job">
+	   <option value=9>Technical</option>
+	   <option value=8>Student</option>
+	   <option value=7>Retired</option>
+	   <option value=6>Others</option>
+	   <option value=5>Justice and Security</option>
+	   <option value=4>IT Sector</option>
+	   <option value=3>Housewife</option>
+	   <option value=2>Health Sector Manager</option>
+	   <option value=0>Education</option>
+	   <option value=1>Finance Sector</option>
+	 </select><br><br>
+
+	 <label for="Maritalstatus"><b>Maritalstatus:</b></label><br>
+
+	 <select class="input1" name="Maritalstatus" id="Maritalstatus">
+	   <option value=0>Married</option>
+	   <option value=1>Single</option>
+	 </select><br><br>
+
+	 <label for="Education"><b>Education:</b></label><br>
+
+	 <select class="input1" name="Education" id="Education">
+	   <option value=2>Primary Education</option>
+	   <option value=1>High School</option>
+	   <option value=3>Under Graduate</option>
+	   <option value=0>Graduate</option>
+	 </select><br><br>
+
+	 <label for="Harm"><b>Harm:</b></label><br>
+
+	 <select class="input1" name="Harm" id="Harm">
+	   <option value=1>Fraud</option>
+	   <option value=2>Internet Shopping Out of Knowledge</option>
+	   <option value=3>Internet Shopping by Intoducing Himself as a Bank Clerk</option>
+	   <option value=6>Withdrawing Money by Introducing Himself as a Bank Clerk</option>
+	   <option value=5>Withdrawals Without Knowledge</option>
+	   <option value=0>Do Moral Harm</option>
+	   <option value=4>Threating / Blackmailing</option>
+	 </select><br><br>
+
+	 <label for="Attack"><b>Attack:</b></label><br>
+
+	 <select class="input1" name="Attack" id="Attack">
+	   <option value=1>Hacking Social Media Accounts</option>
+	   <option value=2>Obtaining Electronic Bank Accounts</option>
+	   <option value=3>Obtaining and Using Data in Digital Environment</option>
+	   <option value=0>Copying Bank / ATM Cards</option>
+	   <option value=4>Selling Counterfeit Products</option>
+	 </select><br><br>
+
+	 <input type="hidden" name="AttackMethod" value="data">
+	 
+
+	 <input class="input1" type="submit" value="Submit"><br>
+	 </form>
+	 <br>
+
+	 <a><b>Output:</b></a>
+   <br>
+   <div  style="background:skyblue; padding: 5% 8%; text-align:center">
+   {{ prediction_text }}
+</div>
+ </div>
+
+ {% endblock content %}
+</body>
+</html>
